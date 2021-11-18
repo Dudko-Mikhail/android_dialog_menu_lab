@@ -1,12 +1,16 @@
-package by.bsu.userdata.ui;
+package by.bsu.userdata.ui.form;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -61,6 +65,17 @@ public class MainActivity extends AppCompatActivity {
         nameEditBtn.setOnClickListener(provider.editButtonListener(this, EditFormName.NAME, activityResultLauncher));
         addressEditBtn.setOnClickListener(provider.editButtonListener(this, EditFormName.ADDRESS, activityResultLauncher));
         commentEditBtn.setOnClickListener(provider.editButtonListener(this, EditFormName.COMMENT, activityResultLauncher));
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_form_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }
