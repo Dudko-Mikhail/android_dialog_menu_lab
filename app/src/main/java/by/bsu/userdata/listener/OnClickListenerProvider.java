@@ -6,10 +6,13 @@ import android.view.View;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.function.Supplier;
 
 import by.bsu.userdata.constant.EditFormName;
+import by.bsu.userdata.constant.FieldData;
+import by.bsu.userdata.ui.dialog.ConfirmationDialogFragment;
 
 public class OnClickListenerProvider {
     private final static OnClickListenerProvider INSTANCE = new OnClickListenerProvider();
@@ -20,18 +23,17 @@ public class OnClickListenerProvider {
 
     public View.OnClickListener cancelButtonListener(AppCompatActivity activity) {
         View.OnClickListener listener = view -> {
-            Intent returnIntent = new Intent();
-            activity.setResult(Activity.RESULT_CANCELED, returnIntent);
-            activity.finish();
+            DialogFragment dialogFragment = new ConfirmationDialogFragment();
+            dialogFragment.show(activity.getSupportFragmentManager(), "ConfirmationDialogFragment");
         };
         return  listener;
     }
 
-    public View.OnClickListener saveButtonListener(EditFormName formName, AppCompatActivity activity, Supplier<String> newFieldText) {
+    public View.OnClickListener saveButtonListener(EditFormName formName, AppCompatActivity activity, Supplier<String> fieldContent) {
         View.OnClickListener listener = view -> {
             Intent returnIntent = new Intent();
-            returnIntent.putExtra("EditFormName", formName.toString());
-            returnIntent.putExtra("newFieldText", newFieldText.get());
+            returnIntent.putExtra(FieldData.FIELD_NAME.name(), formName.toString());
+            returnIntent.putExtra(FieldData.FIELD_CONTENT.name(), fieldContent.get());
             activity.setResult(Activity.RESULT_OK, returnIntent);
             activity.finish();
         };
