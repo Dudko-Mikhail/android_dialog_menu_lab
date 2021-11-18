@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UserData">
         <activity
-            android:name=".ui.EditAddressActivity"
+            android:name=".ui.form.EditAddressActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.EditCommentActivity"
+            android:name=".ui.form.EditCommentActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.EditNameActivity"
+            android:name=".ui.form.EditNameActivity"
             android:exported="true" />
         <activity
             android:name=".ui.MainActivity"
