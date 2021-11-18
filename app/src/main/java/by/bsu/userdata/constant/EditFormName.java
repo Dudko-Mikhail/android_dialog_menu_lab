@@ -2,9 +2,9 @@ package by.bsu.userdata.constant;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import by.bsu.userdata.ui.EditAddressActivity;
-import by.bsu.userdata.ui.EditCommentActivity;
-import by.bsu.userdata.ui.EditNameActivity;
+import by.bsu.userdata.ui.form.EditAddressActivity;
+import by.bsu.userdata.ui.form.EditCommentActivity;
+import by.bsu.userdata.ui.form.EditNameActivity;
 
 public enum EditFormName {
     ADDRESS(EditAddressActivity.class),
