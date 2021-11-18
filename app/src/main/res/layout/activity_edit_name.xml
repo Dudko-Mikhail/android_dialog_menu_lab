@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.EditNameActivity">
+    tools:context=".ui.form.EditNameActivity">
 
     <LinearLayout
         android:id="@+id/editNameLinearLayout"
@@ -48,7 +48,7 @@
         android:id="@+id/editNameSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_between_layout_and_button"
+        android:layout_marginTop="@dimen/base_top_margin"
         android:text="@string/save"
         app:layout_constraintStart_toStartOf="@+id/editNameLinearLayout"
         app:layout_constraintTop_toBottomOf="@+id/editNameLinearLayout" />
