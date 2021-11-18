@@ -10,4 +10,8 @@
     <string name="surname">Фамилия</string>
     <string name="country">Страна</string>
     <string name="city">Город</string>
+    <string name="exit">Выход</string>
+    <string name="are_you_sure">Вы уверены?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>
