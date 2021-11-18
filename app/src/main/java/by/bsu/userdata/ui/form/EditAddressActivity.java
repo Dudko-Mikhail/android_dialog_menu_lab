@@ -1,13 +1,6 @@
-package by.bsu.userdata.form;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package by.bsu.userdata.ui.form;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -18,15 +11,13 @@ import by.bsu.userdata.R;
 import by.bsu.userdata.constant.EditFormName;
 import by.bsu.userdata.listener.OnClickListenerProvider;
 
-public class EditAddressActivity extends AppCompatActivity {
+public class EditAddressActivity extends EditFormTemplate {
     private TextInputEditText cityText;
     private TextInputEditText countryText;
     private TextInputEditText addressText;
-    private Button saveBtn;
-    private Button cancelBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { // TODO add validation
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_address);
 
@@ -38,30 +29,14 @@ public class EditAddressActivity extends AppCompatActivity {
 
         Supplier<String> newFieldText = () -> {
             StringJoiner joiner = new StringJoiner(", ");
-            joiner.add(cityText.getText());
             joiner.add(countryText.getText());
+            joiner.add(cityText.getText());
             joiner.add(addressText.getText());
             return joiner.toString();
         };
         OnClickListenerProvider provider = OnClickListenerProvider.getInstance();
         cancelBtn.setOnClickListener(provider.cancelButtonListener(this));
-        saveBtn.setOnClickListener(provider.saveButtonListener(EditFormName.ADDRESS, // TODO возможно лишенее поле (можно извлечь имя активити из this)
+        saveBtn.setOnClickListener(provider.saveButtonListener(EditFormName.ADDRESS,
                 this, newFieldText));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.edit_form_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.cancelOption) {
-            cancelBtn.callOnClick();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
